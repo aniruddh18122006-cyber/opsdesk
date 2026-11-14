@@ -33,13 +33,16 @@ Generic helpdesks route, escalate and run SLA timers well, but none of them unde
 
 ## Features
 
-- **Ticket queue** with search and views for my queue, unassigned, at-risk and breached tickets, plus SLA badges (ok, at risk, breached) with hours left.
+- **Ticket queue** with search, views for my queue, unassigned, at-risk and breached tickets, filters by region, intent and priority, and SLA badges (on track, at risk, breached) with hours left.
 - **Ticket detail** with booking context, linked tickets, conversation, side conversations and an activity timeline.
 - **New ticket form** with intent auto-suggest from the description (`/api/suggest`).
 - **Actions** to escalate, transfer to another agent, and change status. Hidden for requesters and enforced by the API.
-- **Escalation queue** for the Escalation Manager.
-- **Insights** page with CSV export.
+- **Notifications** panel listing escalated, breached and at-risk tickets. Click one to open it.
+- **Smart Routing** view showing the assignment rules and each agent's live workload.
+- **Side Conversations** inbox across all tickets, and an **Escalation Queue** for the Escalation Manager.
+- **Insights and Analytics** with ticket totals, top themes, an SLA overview, a time-period filter (all time, last 7 or 30 days) and CSV export.
 - **Demo user switcher** to see the app as a requester, agent or manager.
+- **Readable interface**: larger text, full ticket titles, and clear loading, empty and error messages.
 
 ---
 
@@ -87,7 +90,8 @@ opsdesk/
 │   ├── package.json
 │   └── src/
 │       ├── main.jsx
-│       └── styles.css
+│       ├── styles.css
+│       └── readability.css   Larger text and layout fixes (loaded after styles.css)
 ├── database/              schema.sql and seed.py (used by the backend if present)
 └── docs/                  Database notes, demo script, competitor research
 ```
@@ -222,6 +226,42 @@ For POST calls, `user_id` can go in the JSON body or in the URL (`?user_id=`). T
 - Use read replicas for reports, and a queue or webhooks for near-real-time sync.
 - For very large exports: paginate by id, export in chunks, or run a scheduled export job.
 - Retention: the demo keeps every ticket. In production, move tickets closed for more than 180 days into a `ticket_archive` table that stays queryable and exportable.
+
+---
+
+## Project status
+
+| Area | Status |
+|---|---|
+| Backend API, rules, role checks, tests | Done |
+| Frontend screens (queue, detail, create, routing, conversations, escalations, insights) | Done |
+| Frontend and backend connected through the Vite proxy | Done |
+| `database/schema.sql` and `database/seed.py` | In progress (Nandini) |
+| `docs/database.md` and `docs/demo-script.md` | To do |
+| Screenshots in `docs/screenshots/` | To do |
+
+## Changelog
+
+**Integration and interface polish (November 2026)**
+
+- Connected the React frontend to the FastAPI backend and checked every screen against real data.
+- Increased text sizes across the app and widened the ticket title column so titles are no longer cut off.
+- Fixed the required-field stars on the New Ticket form so they sit next to their labels.
+- Insights: the period selector is now a working dropdown (all time, last 7 days, last 30 days).
+- Insights: Export CSV now downloads reliably and confirms with a message.
+- Ticket Detail in the sidebar now opens a ticket instead of returning to the queue.
+- Error messages now disappear on their own instead of staying on screen.
+- Switching demo user clears the open ticket, so one user's ticket is never shown to another.
+
+**Repository cleanup**
+
+- Merged the backend and frontend READMEs into this one file and removed the duplicate.
+- Moved the competitor research into `docs/`.
+- Updated `.gitignore` (build output) and made the CORS line in `backend/.env.example` optional.
+
+**Foundation**
+
+- FastAPI + SQLite backend with automatic linking, region and availability routing with a visible reason, side conversations that keep their recipients on transfer, SLA and escalation, insights, and a streaming CSV export.
 
 ---
 
