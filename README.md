@@ -244,6 +244,8 @@ For POST calls, `user_id` can go in the JSON body or in the URL (`?user_id=`). T
 
 **Integration and interface polish (November 2026)**
 
+- Redesigned the frontend interface with a light, airy theme, centered page layouts, uniform rounded dropdowns, and high-contrast action buttons.
+
 - Connected the React frontend to the FastAPI backend and checked every screen against real data.
 - Increased text sizes across the app and widened the ticket title column so titles are no longer cut off.
 - Fixed the required-field stars on the New Ticket form so they sit next to their labels.
