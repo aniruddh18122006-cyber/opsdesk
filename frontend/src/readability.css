@@ -1,0 +1,54 @@
+/* readability.css: larger, easier-to-read text. Loaded after styles.css. */
+:root{font-size:16px}
+body{font-size:16px;line-height:1.5}
+
+/* captions and small labels: 13px */
+.eyebrow,.workspace-label,thead th,.pill,.nav-count,.online-status,.current-user small,.global-search kbd,.brand small,.ticket-title+small,.message-head small,.recipient-line,.note-tag,.info-row small,.details-list small,.timeline-event small,.linked-row small,.conversation-row small,.escalation-row small,.panel-header p,.metric-card small,.metric-change,.period-chip,.theme-row>small,.chart-legend,.sla-donut small,.team-load-head,.routing-summary small,.routing-steps>div>span,.routing-steps>div>small,.routing-footnote,.routing-live,.policy-badge,.load-meter strong,.table-top,.table-footer,.sort-label,.composer-bottom,.form-section-title small,.form-card .hint,.routing-note small,.notification-panel>header small,.notification-copy small,.notification-reason,.notifications-empty small,.user-picker-menu small,.user-picker-menu>small,.popover-head button,.queue-filter-popover label,.filter-count,.tabs button span{font-size:13px!important}
+
+/* controls: 14px */
+.global-search input,.user-chip,.nav-item,.tabs button,.btn,.toolbar-actions select,.detail-actions select,.muted,.error-banner,.toast,.connect-card p,.tab-bar button,.composer-tools select,.composer-tools input,.full-select,.queue-filter-popover select,.back-link,.detail-meta,.sla,.mono,.ticket-id{font-size:14px!important}
+
+/* body text: 15px */
+tbody td,.assignee,.message-head b,.message-card p,.composer textarea,.details-list span,.timeline-event b,.timeline-event p,.linked-row b,.info-row b,.route-card p,.route-title,.escalation-card textarea,.conversation-row b,.escalation-row b,.escalation-row .priority-label,.recent-list>div,.theme-name,.theme-row>b,.form-card input,.form-card textarea,.form-card select,.form-card label,.routing-note b,.team-load-row,.agent-name b,.notification-copy b,.user-picker-menu b,.popover-head b,.form-section-title b,.side-card h3,.panel-header h2,.routing-steps>div>b,.notification-panel>header b,.current-user b{font-size:15px!important}
+
+/* headings and numbers */
+.page-heading h1{font-size:30px!important}
+.detail-heading h1{font-size:26px!important}
+.metric-card>div b,.routing-summary b{font-size:28px!important}
+.sla-donut b{font-size:30px!important}
+.brand{font-size:18px!important;width:230px}
+
+/* avatars */
+.avatar{height:34px;width:34px;font-size:12px}
+.avatar-sm{height:28px;width:28px;font-size:10px!important}
+.avatar-xs{height:26px;width:26px;font-size:10px!important}
+
+/* ticket table: show full titles, more room */
+td .ticket-title{font-size:16px!important;max-width:420px!important;white-space:normal!important}
+table{min-width:1040px}
+tbody tr{height:68px}
+.btn{height:40px;padding:0 16px}
+.nav-item{height:42px}
+
+/* panels a bit wider for the bigger text */
+.queue-filter-popover{width:280px}
+.user-picker-menu{width:320px}
+.notification-panel{width:min(440px,calc(100vw - 24px))}
+
+/* form: keep the red * on the same line as the label text */
+.form-card label{display:block!important}
+.form-card label>input,.form-card label>textarea,.form-card label>select{display:block;margin-top:6px}
+.form-card label em{display:inline}
+.form-card .hint{display:block;margin-top:5px}
+.form-card input,.form-card textarea,.form-card select{padding:11px 12px}
+
+/* Insights period dropdown */
+.period-select{border:1px solid #dce4ed;background:#fff;border-radius:6px;padding:8px 10px;font-size:14px;color:#465b72}
+
+/* wider sidebar only on large screens (phones keep the slide-out menu) */
+@media(min-width:1101px){.sidebar{width:250px}.main-content{margin-left:250px}}
+
+/* Insights period dropdown: match the rest of the interface */
+.panel-header .period-select{appearance:none;-webkit-appearance:none;height:34px;padding:0 32px 0 12px!important;border:1px solid #dce4ed!important;border-radius:6px!important;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23738399' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center!important;color:#465b72!important;font-size:13px!important;font-weight:500;line-height:1;cursor:pointer;outline:none}
+.panel-header .period-select:hover{background-color:#f4f8fc!important}
+.panel-header .period-select:focus{border-color:#62a1df!important;box-shadow:0 0 0 2px #ecf5ff}
